@@ -94,7 +94,7 @@ $schools = $stmt->fetchAll();
         </select>
         <br>
         <br>
-        <form action="/results.php" id="selectInstitution" method="post">
+        <form action="/result.php" id="selectInstitution" method="post">
         <input type="submit" name="submit2" id="submit2" value="Submit">
         </form>
   </div>

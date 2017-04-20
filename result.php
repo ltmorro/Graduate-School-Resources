@@ -89,22 +89,22 @@ $schools = $stmt->fetchAll();
           <tbody>
             <tr>
               <th scope="col">Institution</th>
-			  <th scope="col">Website</th>
               <th scope="col">Location</th>
               <th scope="col">Student Body Size</th>
-              <th scope="col">Cost</th>
+              <th scope="col">Cost (per credit hour)</th>
               <th scope="col">Degree Options</th>
             </tr>
             <?php 
             foreach($schools as $school){
 				 echo "
 				 <tr>
-			
-				  <td>".$school['School']."</td>
-				  <td>".$school['Website']."</td>
+				  <td>
+          <a href=".$school['Website'].">
+          ".$school['School']."
+          </td>
 				  <td>".$school['Location']."</td>
 				  <td>".$school['Student_Body_Size']."</td>
-				  <td>".$school['Cost']."</td>
+				  <td>$".$school['Cost']."</td>
 				  <td>".$school['Degree_Options']."</td>
 				</tr>";
 	          
