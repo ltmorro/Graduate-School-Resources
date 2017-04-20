@@ -95,7 +95,7 @@ $schools = $stmt->fetchAll();
         <br>
         <br>
         <form action="/result.php" id="selectInstitution" method="post">
-        <input type="submit" name="submit2" id="submit2" value="Submit">
+        <input type="submit" name="submit2" id="submit2" value="Search">
         </form>
   </div>
 <hr>
@@ -105,35 +105,35 @@ $schools = $stmt->fetchAll();
   <h4 class="text-left text-capitalize"><strong><em>Location:&nbsp;</em></strong></h4>
   <p class="text-left">
         <label>
-          <input type="checkbox" name="Location" value="farWest" id="Location_0">
+          <input type="checkbox" name="Location[]" form="search" value="farWest" id="Location_0">
           Far West (AK, CA, HI, NV, OR, WA)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="greatLakes" id="Location_1">
+          <input type="checkbox" name="Location[]" form="search" value="greatLakes" id="Location_1">
           Great Lakes (IL, IN, MI, OH, WI)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="newEngland" id="Location_2">
+          <input type="checkbox" name="Location[]" form="search" value="newEngland" id="Location_2">
           New England (CT, ME, MA, NH, RI, VT)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="mideast" id="Location_3">
+          <input type="checkbox" name="Location[]" form="search" value="mideast" id="Location_3">
           Mideast (DE, DC, MD, NJ, NY, PA)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="plains" id="Location_4">
+          <input type="checkbox" name="Location[]" form="search" value="plains" id="Location_4">
           Plains (IA, KS, MN, MO, NE, ND, SD)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="rockyMountains" id="Location_5">
+          <input type="checkbox" name="Location[]" form="search" value="rockyMountains" id="Location_5">
           Rocky Mountains (CO, ID, MT, UT, WY)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="southEast" id="Location_6">
+          <input type="checkbox" name="Location[]" form="search" value="southEast" id="Location_6">
           Southeast (AL, AR, FL, GA, KY, LA, MS, NC, SC, TN, VA, WV)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location" value="southWest" id="Location_7">
+          <input type="checkbox" name="Location[]" form="search" value="southWest" id="Location_7">
           Southwest (AZ, NM, OK, TX)</label>
         <br>
       </p>
@@ -141,49 +141,51 @@ $schools = $stmt->fetchAll();
 </h4>
 <p class="text-left">
   <label>
-    <input type="checkbox" name="Student Body Size" value="small" id="StudentBodySize_0">
+    <input type="checkbox" name="Student Body Size[]" form="search" value="small" id="StudentBodySize_0">
     Small (Less than 5,000 students)</label>
   <br>
   <label>
-    <input type="checkbox" name="Student Body Size" value="medium" id="StudentBodySize_1">
+    <input type="checkbox" name="Student Body Size[]" form="search" value="medium" id="StudentBodySize_1">
     Medium (5,000 - 10,000 students)</label>
   <br>
   <label>
-    <input type="checkbox" name="Student Body Size" value="large" id="StudentBodySize_2">
+    <input type="checkbox" name="Student Body Size[]" form="search" value="large" id="StudentBodySize_2">
     Large (More than 10,000 students)</label>
   <br>
 </p>
 <h4 class="text-left"><em><strong>Cost (per credit hour):</strong>&nbsp;</em></h4>
 <p class="text-left">
   <label>
-    <input type="checkbox" name="Cost" value="less1000" id="Cost_0">
+    <input type="checkbox" name="Cost[]" form="search" value="less1000" id="Cost_0">
     Less than $1,000</label>
   <br>
   <label>
-    <input type="checkbox" name="Cost" value="more1000" id="Cost_1">
+    <input type="checkbox" name="Cost[]" form="search" value="more1000" id="Cost_1">
     More than $1,000</label>
   <br>
 </p>
 <h4 class="text-left"><em><strong>Degree Options:</strong></em></h4>
 <p class="text-left">
   <label>
-    <input type="checkbox" name="DegreeOptions" value="ms" id="DegreeOptions_0">
+    <input type="checkbox" name="DegreeOptions[]" form="search" value="ms" id="DegreeOptions_0">
     MS</label>
   <br>
   <label>
-    <input type="checkbox" name="DegreeOptions" value="mse" id="DegreeOptions_1">
+    <input type="checkbox" name="DegreeOptions[]" form="search" value="mse" id="DegreeOptions_1">
     MSE</label>
   <br>
   <label>
-    <input type="checkbox" name="DegreeOptions" value="phd" id="DegreeOptions_2">
+    <input type="checkbox" name="DegreeOptions[]" form="search" value="phd" id="DegreeOptions_2">
     PHD</label>
   <br>
   <label>
-    <input type="checkbox" name="DegreeOptions" value="mcit" id="DegreeOptions_3">
+    <input type="checkbox" name="DegreeOptions[]" form="search" value="mcit" id="DegreeOptions_3">
     MCIT</label>
   <br>
 </p>
-<input type="submit" name="submit" id="submit" value="Submit">
+<form action="/search.php" id="search" method="post">
+<input type="submit" name="submit" id="submit" value="Search">
+</form>
 </div>
   </div>
 <hr>
