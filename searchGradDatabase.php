@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE>
+<?php
+ 
+//Connect to our MySQL database using the PDO extension.
+$pdo = new PDO('mysql:host=localhost;dbname=gradDB', 'root', 'password');
+ 
+//Our select statement. This will retrieve the data that we want.
+$sql = "SELECT School FROM grad";
+ 
+//Prepare the select statement.
+$stmt = $pdo->prepare($sql);
+ 
+//Execute the statement.
+$stmt->execute();
+ 
+//Retrieve the rows using fetchAll.
+$schools = $stmt->fetchAll();
+ 
+?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -62,21 +80,11 @@
 <div class="container">
   <div class="row text-center">
     <h3>Select by Institution:&nbsp;</h3>
-    <select name="select" id="select">
-    	<?php
-
-		mysql_connect('localhost', 'root', 'password');
-		mysql_select_db('gradDB');
-
-		$sql = "SELECT School FROM grad";
-		$result = mysql_query($sql);
-
-		echo "<select name='school'>";
-		while ($row = mysql_fetch_array($result)) {
-			echo "<option value='" . $row['school'] . "'>" . $row['school'] . "</option>";
-		}
-		?>
-    </select>
+	<select name"schools">
+    <?php foreach($schools as $school): ?>
+        <option><?=$school['School']?></option>
+    <?php endforeach; ?>
+</select>
     <br>
     <br>
 <input type="submit" name="submit2" id="submit2" value="Submit">
