@@ -1,28 +1,10 @@
 <!DOCTYPE>
-<?php
- 
-//Connect to our MySQL database using the PDO extension.
-$pdo = new PDO('mysql:host=localhost;dbname=gradDB', 'root', 'password');
- 
-//Our select statement. This will retrieve the data that we want.
-$sql = "SELECT School FROM grad";
- 
-//Prepare the select statement.
-$stmt = $pdo->prepare($sql);
- 
-//Execute the statement.
-$stmt->execute();
- 
-//Retrieve the rows using fetchAll.
-$schools = $stmt->fetchAll();
- 
-?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap - Prebuilt Layout</title>
+<title>Graduate Program Database Search</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -33,6 +15,31 @@ $schools = $stmt->fetchAll();
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<?php
+ 
+//Connect to our MySQL database using the PDO extension.
+try{
+    $dbh = new pdo( 'mysql:host=127.0.0.1;dbname=gradDB',
+                    'root',
+                    'password',
+                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+catch(PDOException $ex){
+    die(json_encode(array('outcome' => false, 'message' => 'Unable to connect')));
+} 
+//Our select statement. This will retrieve the data that we want.
+$sql = "SELECT School FROM grad";
+ 
+//Prepare the select statement.
+$stmt = $dbh->prepare($sql);
+ 
+//Execute the statement.
+$stmt->execute();
+
+//Retrieve the rows using fetchAll.
+$schools = $stmt->fetchAll();
+ 
+?>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -80,15 +87,16 @@ $schools = $stmt->fetchAll();
 <div class="container">
   <div class="row text-center">
     <h3>Select by Institution:&nbsp;</h3>
-	<select name"schools">
-    <?php foreach($schools as $school): ?>
-        <option><?=$school['School']?></option>
-    <?php endforeach; ?>
-</select>
-    <br>
-    <br>
-<input type="submit" name="submit2" id="submit2" value="Submit">
-    
+    	  <select name="schools" form="selectInstitution">
+          <?php foreach($schools as $school): ?>
+              <option><?=$school['School']?></option>
+          <?php endforeach; ?>
+        </select>
+        <br>
+        <br>
+        <form action="/results.php" id="selectInstitution" method="post">
+        <input type="submit" name="submit2" id="submit2" value="Submit">
+        </form>
   </div>
 <hr>
   <div class="row text-center">

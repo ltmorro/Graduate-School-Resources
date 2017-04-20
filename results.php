@@ -1,8 +1,6 @@
-<!DOCTYPE>
-
-<head>
+<html>
 <body>
-"Hello World!"
+
 
 <?php
 try{
@@ -10,31 +8,30 @@ try{
                     'root',
                     'password',
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    die(json_encode(array('outcome' => true)));
 }
 catch(PDOException $ex){
     die(json_encode(array('outcome' => false, 'message' => 'Unable to connect')));
 }
-
-//Connect to our MySQL database using the PDO extension.
-$pdo = new PDO('mysql:host=localhost;dbname=gradDB', 'root', 'password');
-echo "Test";
 //Our select statement. This will retrieve the data that we want.
-$sql = "SELECT School FROM grad";
+$sql = "SELECT * FROM grad WHERE School LIKE '{$_POST["schools"]}'";
  
 //Prepare the select statement.
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
  
 //Execute the statement.
 $stmt->execute();
  
 //Retrieve the rows using fetchAll.
 $schools = $stmt->fetchAll();
- 
+foreach($schools as $school){
+     echo $school['School'];
+     echo $school['Website'];
+     echo $school['Location'];
+     echo $school['Student_Body_Size'];
+     echo $school['Cost'];
+     echo $school['Degree_Options'];             
+}
 ?>
 
-<?php foreach($schools as $school): ?>
-    echo $school['School']?>
-<?php endforeach; ?>
 </body>
-</head>
+</html>
