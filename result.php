@@ -69,6 +69,9 @@ $schools = $stmt->fetchAll();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="searchGradDatabase.php">Search</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="graduateTips.php">Home</a></li>
+      </ul>
     </div>
     <!-- /.navbar-collapse --> 
   </div>
