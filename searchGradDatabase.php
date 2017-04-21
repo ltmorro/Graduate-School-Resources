@@ -56,14 +56,7 @@ $schools = $stmt->fetchAll();
         <li class="active"></li>
 <li class="dropdown">
   <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
+      </ul>
       </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -88,7 +81,7 @@ $schools = $stmt->fetchAll();
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row text-center">
     <h3>Select by Institution:&nbsp;</h3>
     	  <select name="schools" form="selectInstitution">
@@ -106,7 +99,7 @@ $schools = $stmt->fetchAll();
   <div class="row text-center">
 <div class="col-md-6 col-md-offset-3">
   <h3>Select by Criteria:</h3>
-  <h4 class="text-left text-capitalize"><strong><em>Location:&nbsp;</em></strong></h4>
+  <h4 class="text-left text-capitalize"><em>Location:</em></h4>
   <p class="text-left">
         <label>
           <input type="checkbox" name="Location[]" form="search" value="farWest" id="Location_0">
@@ -141,7 +134,7 @@ $schools = $stmt->fetchAll();
           Southwest (AZ, NM, OK, TX)</label>
         <br>
       </p>
-<h4 class="text-left"><strong><em>Student Body Size: </em></strong><br>
+<h4 class="text-left"><em>Student Body Size: </em><br>
 </h4>
 <p class="text-left">
   <label>
@@ -157,7 +150,7 @@ $schools = $stmt->fetchAll();
     Large (More than 10,000 students)</label>
   <br>
 </p>
-<h4 class="text-left"><em><strong>Cost (per credit hour):</strong>&nbsp;</em></h4>
+<h4 class="text-left"><em>Cost (per credit hour):</em></h4>
 <p class="text-left">
   <label>
     <input type="checkbox" name="Cost[]" form="search" value="less1000" id="Cost_0">
@@ -168,7 +161,7 @@ $schools = $stmt->fetchAll();
     More than $1,000</label>
   <br>
 </p>
-<h4 class="text-left"><em><strong>Degree Options:</strong></em></h4>
+<h4 class="text-left"><em>Degree Options:</em></h4>
 <p class="text-left">
   <label>
     <input type="checkbox" name="DegreeOptions[]" form="search" value="ms" id="DegreeOptions_0">
@@ -193,7 +186,7 @@ $schools = $stmt->fetchAll();
 </div>
   </div>
 <hr>
-  <div class="row">
+  <div class="row panel-footer">
     <div class="text-center col-md-6 col-md-offset-3">
       <h4>CPSC 4910&nbsp;</h4>
       <p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; </p>

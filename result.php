@@ -86,7 +86,7 @@ $schools = $stmt->fetchAll();
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row text-center">
 		<h3>Institutional Search Results</h3>
     <table class="table">
@@ -117,12 +117,10 @@ $schools = $stmt->fetchAll();
 			?>
           </tbody>
     </table>
-    <form action="/results.php" id="selectInstitution" method="post">
-    </form>
   </div>
 <hr>
 <hr>
-  <div class="row">
+  <div class="row  panel-footer">
     <div class="text-center col-md-6 col-md-offset-3">
       <h4>CPSC 4910&nbsp;</h4>
       <p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; </p>

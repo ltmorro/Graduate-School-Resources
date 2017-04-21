@@ -88,7 +88,7 @@ $schools = $stmt->fetchAll();
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row text-center">
     <p>Here are some tips for applying to grad school</p>
     <br>
@@ -99,7 +99,7 @@ $schools = $stmt->fetchAll();
     <p>Here is an example timeline for applying</p>
   </div>
 <hr>
-  <div class="row">
+  <div class="row panel-footer">
     <div class="text-center col-md-6 col-md-offset-3">
       <h4>CPSC 4910&nbsp;</h4>
       <p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; </p>

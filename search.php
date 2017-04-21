@@ -162,7 +162,7 @@ $schools = $stmt->fetchAll();
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span></button>
-      <a class="navbar-brand" href="#">Clemson University</a></div>
+      <a class="navbar-brand" href="http://www.clemson.edu">Clemson University</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
@@ -201,10 +201,10 @@ $schools = $stmt->fetchAll();
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row text-center">
 		<h3>Institutional Search Results</h3>
-    <table>
+    <table class="table">
           <tbody>
             <tr>
               <th scope="col">Institution</th>
@@ -232,12 +232,10 @@ $schools = $stmt->fetchAll();
 			?>
           </tbody>
     </table>
-    <form action="/results.php" id="selectInstitution" method="post">
-    </form>
   </div>
 <hr>
 <hr>
-  <div class="row">
+  <div class="row panel-footer">
     <div class="text-center col-md-6 col-md-offset-3">
       <h4>CPSC 4910&nbsp;</h4>
       <p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; </p>
