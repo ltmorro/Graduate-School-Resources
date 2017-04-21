@@ -16,6 +16,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <?php
+//ini_set('display_errors', 'On');
+//error_reporting(E_ALL);
 try{
     $dbh = new pdo( 'mysql:host=127.0.0.1;dbname=gradDB',
                     'root',
@@ -28,39 +30,123 @@ catch(PDOException $ex){
 //processing which checkboxes were marked
 
 //Our select statement. This will retrieve the data that we want.
-$sql = "SELECT * FROM grad WHERE IN";
+$sql = "SELECT * FROM grad WHERE ";
 $count=0;
-$locationChecks = $_POST['Location'];
-$locationSQL= ''
 
+//processing for location
+$locationChecks = $_POST['Location'];
+$locationSQL= '';
 if(!empty($locationChecks))
 {
   foreach($locationChecks as $check){
+     //echo $check;
      if($check == "farWest")
-        $locationSQL.="AK, CA, HI, NV, OR, WA,";
+        $locationSQL.="'AK', 'CA', 'HI', 'NV', 'OR', 'WA',";
      if($check == "greatLakes")
-        $locationSQL.="IL,IN,MI,OH,WI,";
+        $locationSQL.="'IL','IN','MI','OH','WI',";
      if($check == "newEngland")
-        $locationSQL.="CT,ME,MA,NH,RI,VT,";
+        $locationSQL.="'CT','ME','MA','NH','RI','VT',";
      if($check == "midEast")
-        $locationSQL.="DE,DC,MD,NJ,NY,PA,";
+        $locationSQL.="'DE','DC','MD','NJ','NY','PA',";
      if($check == "plains")
-        $locationSQL.="IA,KS,MN,MO,NE,ND,SD,";
+        $locationSQL.="'IA','KS','MN','MO','NE','ND','SD',";
      if($check == "rockyMountains")
-        $locationSQL.="CO,ID,MT,UT,WY,";
+        $locationSQL.="'CO','ID','MT','UT','WY',";
      if($check == "southEast")
-        $locationSQL.="AL,AR,FL,GA,KY,LA,MS,NC,SC,TN,VA,WV,";
-     if($check == "farWest")
-        $locationSQL.="AZ,NM,OK,TX,";
+        $locationSQL.="'AL','AR','FL','GA','KY','LA','MS','NC','SC','TN','VA','WV',";
+     if($check == "southWest")
+        $locationSQL.="'AZ','NM','OK','TX',";
       $locationSQL= rtrim($locationSQL,',');
   }
-  $sql.='("'.$locationSQL.'")';
-  echo $sql;
-  count++;
+  $sql.='Location IN ('.$locationSQL.')';
+  
+  $count+=1;
 }
 
+//processing for student body size
+$studentChecks= $_POST['Size'];
+$studentSQL= '';
+$small=false;
+$medium=false;
+$large=false;
+if(!empty($studentChecks))
+{
+  foreach($studentChecks as $check){
+      //echo $check;
+      if($check == "small")
+        $small=true;
+      if($check == "medium")
+        $medium=true;
+      if($check == "large")
+        $large=true;
+      if($small && $medium && $large)
+        $studentSQL= "> 0";
+      else if($small && $medium)
+        $studentSQL= "< 10000";
+      else if ($small && $large)
+        $studentSQL ="< 5000 OR Student_Body_Size > 10000";
+      else if ($small)
+        $studentSQL ="< 5000";
+      else if ($medium and $large)
+        $studentSQL="> 5000";
+      else if ($medium)
+        $studentSQL="BETWEEN 5000 and 10000";
+      else if ($large)
+        $studentSQL="> 10000"; 
+  }
+  if($count == 0)
+    $sql.='Student_Body_Size '.$studentSQL.'';
+  else
+    $sql.=' AND Student_Body_Size '.$studentSQL.'';
+  
+  $count+=1;
+}
 
+//processing for student body size
+$costChecks= $_POST['Cost'];
+$costSQL= '';
+if(!empty($costChecks))
+{
+  foreach($costChecks as $check){
+      //echo $check;
+      if($check == "less1000")
+        $costSQL= "< 1000";
+      if($check == "more1000")
+        $costSQL= "> 1000";
+  }
+  if($count == 0)
+    $sql.='Cost '.$costSQL.'';
+  else
+    $sql.=' AND Cost '.$costSQL.'';
+  
+  $count+=1;
+}
  
+//processing for degree options
+$degreeChecks= $_POST['DegreeOptions'];
+$degreeSQL= '';
+if(!empty($degreeChecks))
+{
+  foreach($degreeChecks as $check){
+      //echo $check;
+      if($check == "ms")
+        $degreeSQL= "'M.S, Ph.D.','M.S, MFA, Ph.D.','M.S, MSEC, Ph.D.','M.S.','M.S, MSE, Ph.D.','M.S, D.Sc.','M.S','PH.D., M.S., MCIT','MS/MCS, PH.D.','MCS/MS',";
+      if($check == "mse")
+        $degreeSQL= "'M.S, MSEC, Ph.D.','M.S, MSE, Ph.D.',";
+      if($check == "phd")
+        $degreeSQL = "'M.S, Ph.D.','Ph.D.','M.S, MFA, Ph.D.','M.S, MSEC, Ph.D.','M.S, MSE, Ph.D.','PH.D., M.S., MCIT','JD/MS, PH. D.','MS/MCS, PH.D.',";
+      if($check == "mcit")
+        $degreeSQL = "'PH.D., M.S., MCIT',";
+      $degreeSQL= rtrim($degreeSQL,',');
+  }
+  if($count == 0)
+    $sql.='Degree_Options IN ('.$degreeSQL.')';
+  else
+    $sql.=' AND Degree_Options IN ('.$degreeSQL.')';
+  
+  $count+=1;
+}
+
 //Prepare the select statement.
 $stmt = $dbh->prepare($sql);
  
@@ -100,7 +186,7 @@ $schools = $stmt->fetchAll();
         <div class="form-group"> </div>
 </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Search</a></li>
+        <li><a href="searchGradDatabase.php">Search</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 

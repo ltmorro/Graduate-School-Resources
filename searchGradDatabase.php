@@ -47,7 +47,7 @@ $schools = $stmt->fetchAll();
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="#">Clemson University</a></div>
+      <a class="navbar-brand" href="https://www.clemson.edu">Clemson University</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
@@ -69,7 +69,7 @@ $schools = $stmt->fetchAll();
         <div class="form-group"> </div>
 </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Search</a></li>
+        <li><a href="searchGradDatabase.php">Search</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -117,13 +117,13 @@ $schools = $stmt->fetchAll();
           New England (CT, ME, MA, NH, RI, VT)</label>
         <br>
         <label>
-          <input type="checkbox" name="Location[]" form="search" value="mideast" id="Location_3">
+          <input type="checkbox" name="Location[]" form="search" value="midEast" id="Location_3">
           Mideast (DE, DC, MD, NJ, NY, PA)</label>
         <br>
         <label>
           <input type="checkbox" name="Location[]" form="search" value="plains" id="Location_4">
           Plains (IA, KS, MN, MO, NE, ND, SD)</label>
-        <br>
+        <br> 
         <label>
           <input type="checkbox" name="Location[]" form="search" value="rockyMountains" id="Location_5">
           Rocky Mountains (CO, ID, MT, UT, WY)</label>
@@ -141,15 +141,15 @@ $schools = $stmt->fetchAll();
 </h4>
 <p class="text-left">
   <label>
-    <input type="checkbox" name="Student Body Size[]" form="search" value="small" id="StudentBodySize_0">
+    <input type="checkbox" name="Size[]" form="search" value="small" id="Size_0">
     Small (Less than 5,000 students)</label>
   <br>
   <label>
-    <input type="checkbox" name="Student Body Size[]" form="search" value="medium" id="StudentBodySize_1">
+    <input type="checkbox" name="Size[]" form="search" value="medium" id="Size_1">
     Medium (5,000 - 10,000 students)</label>
   <br>
   <label>
-    <input type="checkbox" name="Student Body Size[]" form="search" value="large" id="StudentBodySize_2">
+    <input type="checkbox" name="Size[]" form="search" value="large" id="Size_2">
     Large (More than 10,000 students)</label>
   <br>
 </p>
