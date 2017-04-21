@@ -1,6 +1,8 @@
 <!DOCTYPE>
 <html lang="en">
 <head>
+<script src="https://use.typekit.net/bmf3opz.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,9 +52,8 @@ $schools = $stmt->fetchAll();
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
         <li class="active"></li>
-        <li></li>
-        <li class="dropdown">
-<ul class="dropdown-menu" role="menu">
+<li class="dropdown">
+  <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -61,7 +62,7 @@ $schools = $stmt->fetchAll();
             <li class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
-        </li>
+      </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group"> </div>
