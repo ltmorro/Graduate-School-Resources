@@ -3,6 +3,13 @@
 <head>
 <script src="https://use.typekit.net/bmf3opz.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+<style type="text/css">
+  .fouc {display:none;}
+</style>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,16 +96,18 @@ $schools = $stmt->fetchAll();
 <div class="container-fluid">
   <div class="row text-center">
 		<h3>Institutional Search Results</h3>
-    <table class="table">
-          <tbody>
-            <tr>
+    <table id="schoolTable" class="table">
+          <thead>
+          <tr>
               <th scope="col">Institution</th>
               <th scope="col">Location</th>
               <th scope="col">Student Body Size</th>
               <th scope="col">Cost (per credit hour)</th>
               <th scope="col">Degree Options</th>
             </tr>
-            <?php 
+          </thead>
+          <tbody>
+          <?php 
             foreach($schools as $school){
 				 echo "
 				 <tr>
@@ -128,11 +137,16 @@ $schools = $stmt->fetchAll();
   </div>
   <hr>
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
+<script>
+$('html').addClass('fouc');
+$(document).ready(function() {
+    $('#schoolTable').DataTable();
+    $('html').show();
+} );
+</script>
 </body>
 </html>
 

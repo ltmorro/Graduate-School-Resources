@@ -3,6 +3,9 @@
 <head>
 <script src="https://use.typekit.net/bmf3opz.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
+<style type="text/css">
+  .fouc {display:none;}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -112,6 +115,12 @@ $schools = $stmt->fetchAll();
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
+<script>
+$('html').addClass('fouc');
+$(document).ready(function() {
+    $('html').show();
+} );
+</script>
 </body>
 </html>
 

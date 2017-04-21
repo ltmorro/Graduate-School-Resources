@@ -6,6 +6,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+  .fouc {display:none;}
+</style>
 <title>Graduate Program Database Search</title>
 
 <!-- Bootstrap -->
@@ -59,15 +62,20 @@ $schools = $stmt->fetchAll();
       </ul>
       </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group"> </div>
-</form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="searchGradDatabase.php">Search</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="graduateTips.php">Home</a></li>
-      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="searchGradDatabase.php">Search</a></li>
+          </ul> 
+        </div>
+      </form>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="graduateTips.php">Home</a></li>
+          </ul> 
+        </div>
+      </form>
     </div>
     <!-- /.navbar-collapse --> 
   </div>
@@ -199,6 +207,12 @@ $schools = $stmt->fetchAll();
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
+<script>
+$('html').addClass('fouc');
+$(document).ready(function() {
+    $('html').show();
+} );
+</script>
 </body>
 </html>
 
